@@ -11,6 +11,10 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 
 import com.mongodb.Mongo;
 
+
+/*
+ * http://stackoverflow.com/questions/26509971/spring-batch-jpapagingitemreader-why-some-rows-are-not-read
+ */
 public class App {
 	public static void main(String[] args) {
 

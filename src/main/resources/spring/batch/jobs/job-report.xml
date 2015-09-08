@@ -11,7 +11,7 @@
 	<batch:job id="reportJob">
 		<batch:step id="step1">
 			<batch:tasklet>
-				<batch:chunk reader="mySQLItemReader" 
+				<batch:chunk reader="hibernateItemReader" 
 				             writer="mongodbItemWriter"
 					commit-interval="1">
 				</batch:chunk>
@@ -24,10 +24,10 @@
 		<property name="collection" value="users" />
 	</bean>
 	
-	<bean id="hibernateItemReader"
-    class="org.springframework.batch.item.database.HibernateCursorItemReader">
-    <property name="queryString" value="from CustomerCredit" />
-    <property name="sessionFactory" ref="sessionFactory" />
+	<bean id="itemReader"
+		class="org.springframework.batch.item.database.JpaPagingItemReader">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+		<property name="queryString" value="select c from CustomerCredit c" />
 	</bean>
 	
 	<bean id="mySQLItemReader"
@@ -41,11 +41,7 @@
 		</property>
 	</bean>
 	
-	<bean id="xmlItemReader" class="org.springframework.batch.item.xml.StaxEventItemReader">
-		<property name="fragmentRootElementName" value="record" />
-		<property name="resource" value="classpath:xml/report.xml" />
-		<property name="unmarshaller" ref="reportUnmarshaller" />
-	</bean>
+	
 
 	<bean id="reportUnmarshaller" class="org.springframework.oxm.xstream.XStreamMarshaller">
 
