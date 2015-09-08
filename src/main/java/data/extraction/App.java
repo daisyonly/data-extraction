@@ -1,4 +1,4 @@
-package com.mkyong;
+package data.extraction;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobExecution;

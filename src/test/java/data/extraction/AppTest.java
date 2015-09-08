@@ -1,4 +1,4 @@
-package com.mkyong;
+package data.extraction;
 
 import static org.junit.Assert.assertEquals;
 

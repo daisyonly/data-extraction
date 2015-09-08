@@ -1,4 +1,4 @@
-package com.mkyong.model;
+package data.extraction.model;
 
 public class User {
 

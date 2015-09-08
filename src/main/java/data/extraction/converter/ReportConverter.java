@@ -1,4 +1,4 @@
-package com.mkyong.converter;
+package data.extraction.converter;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
@@ -7,12 +7,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-import com.mkyong.model.Report;
 import com.thoughtworks.xstream.converters.Converter;
 import com.thoughtworks.xstream.converters.MarshallingContext;
 import com.thoughtworks.xstream.converters.UnmarshallingContext;
 import com.thoughtworks.xstream.io.HierarchicalStreamReader;
 import com.thoughtworks.xstream.io.HierarchicalStreamWriter;
+
+import data.extraction.model.Report;
 
 //http://xstream.codehaus.org/converter-tutorial.html
 public class ReportConverter implements Converter {

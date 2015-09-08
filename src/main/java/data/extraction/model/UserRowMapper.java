@@ -1,4 +1,4 @@
-package com.mkyong.model;
+package data.extraction.model;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
