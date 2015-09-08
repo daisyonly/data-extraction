@@ -1,0 +1,38 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mongo="http://www.springframework.org/schema/data/mongo" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/data/mongo
+        http://www.springframework.org/schema/data/mongo/spring-mongo-1.0.xsd">
+
+    <!-- connect to mongodb -->
+	<mongo:mongo id="mongo" host="133.133.133.122" port="27017" />
+	<mongo:db-factory id="mongoDbFactory" dbname="cccis-data" mongo-ref="mongo"/>
+ 
+	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
+		<constructor-arg name="mongoDbFactory" ref="mongoDbFactory" />
+	</bean>
+	
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/test-batch" />
+		<property name="username" value="root" />
+		<property name="password" value="" />
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    	<property name="dataSource" ref="dataSource" />
+    	<property name="mappingLocations" value="classpath*:/org/springframework/batch/sample/domain/**/*.hbm.xml" />
+    	<property name="hibernateProperties">
+        	<value>
+            	<![CDATA[
+        			hibernate.show_sql=true
+        			hibernate.format_sql=true
+        		]]>
+        	</value>
+    	</property>
+	</bean>
+	  
+</beans>
